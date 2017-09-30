@@ -3,3 +3,5 @@ jtagboot.hex
 jtagboot.list
 jtagboot.txt
 kernel.img
+
+nbproject/private/
