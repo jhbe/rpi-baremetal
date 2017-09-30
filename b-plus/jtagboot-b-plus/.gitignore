@@ -4,4 +4,4 @@ jtagboot.list
 jtagboot.txt
 kernel.img
 
-nbproject/private/
+nbproject/private/**

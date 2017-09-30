@@ -1,6 +1,6 @@
 # LedBlink-B-Plus
 
-The purpose of this LED-blinking (GPIO 47, Green LED on a B+) application is to illustrate
+The purpose of this LED-blinking (GPIO 35, red power LED on a B+) application is to illustrate
 how to use the arm-unknown-eabi toolchain, standard libraries (newlib) and C++ classes.
 In particular, it does NOT use -nostdlib, -nodefaultfiles or -nostartfiles.
 
