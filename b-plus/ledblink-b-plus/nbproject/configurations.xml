@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="100">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df root="../common-b-plus" name="0">
-      <in>aux.c</in>
-      <in>aux.h</in>
-      <in>cstubs.c</in>
-      <in>gpio.c</in>
-      <in>gpio.h</in>
-      <in>start.s</in>
-      <in>uart.c</in>
-      <in>uart.h</in>
-    </df>
-    <df root="." name="1">
-      <in>jtagboot.c</in>
+    <df root="." name="0">
+      <in>README.md</in>
+      <in>led.cpp</in>
+      <in>ledblink.cpp</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -25,7 +17,6 @@
   <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
     <Elem>.</Elem>
-    <Elem>../common-b-plus</Elem>
   </sourceRootList>
   <projectmakefile>makefile</projectmakefile>
   <confs>
@@ -45,32 +36,25 @@
           <executablePath></executablePath>
           <cTool>
             <incDir>
-              <pElem>.</pElem>
+              <pElem>../common-b-plus</pElem>
             </incDir>
           </cTool>
+          <ccTool>
+            <incDir>
+              <pElem>../common-b-plus</pElem>
+            </incDir>
+          </ccTool>
         </makeTool>
         <preBuild>
           <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
           <preBuildCommand></preBuildCommand>
         </preBuild>
       </makefileType>
-      <item path="../common-b-plus/aux.c" ex="false" tool="0" flavor2="0">
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../common-b-plus/aux.h" ex="false" tool="3" flavor2="0">
+      <item path="led.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="../common-b-plus/cstubs.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../common-b-plus/gpio.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../common-b-plus/gpio.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../common-b-plus/start.s" ex="false" tool="4" flavor2="0">
-      </item>
-      <item path="../common-b-plus/uart.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../common-b-plus/uart.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="jtagboot.c" ex="false" tool="0" flavor2="0">
+      <item path="ledblink.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

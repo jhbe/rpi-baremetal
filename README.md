@@ -11,6 +11,11 @@ target RPI and load new images without removing the SD card. It also enables
 the same server RPI to use GDB to debug the Target RPI. See the README.md in the
 JtagBoot folders for details.
 
+# LebBlink
+
+This project illustrates the use of C++ classes and standard libraries (newlib);
+it does NOT use -nostdlib, -nodefaultfiles nor -nostartfiles.
+
 # Setup
 
 ## Toolchain
