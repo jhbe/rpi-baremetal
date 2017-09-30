@@ -8,14 +8,15 @@ The JtagBoot projects builds an image that, when copied onto the SD card, will
 cause the RPI to configure some of the GPIO for JTAG usage. That in turn enables
 another RPI to act as a JTAG server and can, using OpenOCD, connect to the booted
 target RPI and load new images without removing the SD card. It also enables
-the same server RPI to use GDB to debug the Target RPI.
+the same server RPI to use GDB to debug the Target RPI. See the README.md in the
+JtagBoot folders for details.
 
 # Setup
 
 ## Toolchain
 
 The code is compiled using the crosstools-ng cross compiler toolchain. To set it
-up on Debian Stretch:
+up on Debian Stretch with gdb support:
 
     sudo apt-get install gperf bison flex gawk libtool libtool-bin texinfo libncurses5-dev help2man automake gcc g++ subversion python-dev
     wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.23.0.tar.bz2
@@ -31,13 +32,7 @@ Add to ~/.bashrc and restart the terminal to get the new path:
 
     export PATH=~/cross/bin:$PATH
 
-To build the debugger as well:
-
-    ct-ng menuconfig
-
-...
-
-Now build a toolchain for arm-unknown-eabi with gdb support:
+Build a toolchain for arm-unknown-eabi with gdb support:
 
     cd
     mkdir staging
