@@ -3,26 +3,34 @@
 This is a collection of (NetBeans 8.2) baremetal projects for various Raspberry
 Pi models.
 
-# JtagBoot
-
-The JtagBoot projects builds an image that, when copied onto the SD card, will
+The *JtagBoot* projects builds an image that, when copied onto the SD card, will
 cause the RPI to configure some of the GPIO for JTAG usage. That in turn enables
 another RPI to act as a JTAG server and can, using OpenOCD, connect to the booted
 target RPI and load new images without removing the SD card. It also enables
 the same server RPI to use GDB to debug the Target RPI. See the README.md in the
 JtagBoot folders for details.
 
-# LebBlink
-
-This project illustrates the use of C++ classes and standard libraries (newlib);
+The *LebBlink* project illustrates the use of C++ classes and standard libraries (newlib);
 it does NOT use -nostdlib, -nodefaultfiles nor -nostartfiles.
+
+# Terminology
+
+Three computers are required:
+
+- The Debian based development PC. Not a Raspberry Pi.
+
+- The *Server RPI* runs Debian and will have OpenOCD installed on it. It is connected 
+through five P1 header wires to...
+
+- The *Target* RPI. This is the baremetal RPI. It will boot of an SD card with just
+enough to run the JtagBoot program once.
 
 # Setup
 
 ## Toolchain
 
-The code is compiled using the crosstools-ng cross compiler toolchain. To set it
-up on Debian Stretch with gdb support:
+The code is compiled using the crosstools-ng cross compiler toolchain on the Development
+PC. To set it up on Debian Stretch with gdb support:
 
     sudo apt-get install gperf bison flex gawk libtool libtool-bin texinfo libncurses5-dev help2man automake gcc g++ subversion python-dev
     wget http://crosstool-ng.org/download/crosstool-ng/crosstool-ng-1.23.0.tar.bz2
@@ -67,14 +75,16 @@ Install OpenOCD on the Server RPI:
 
 Connect the Server and Target RPIs. The numbers below are PI header numbers (not GPIO numbers).
 
-| Signal | Server | Target | Alt ^ | Notes |
-|--------|--------|--------|-------|-------|
-| GND    | 6      | 6      |       |       |
-| TCK    | 33     | 33     |  5    |       |
-| TMS    | 22     | 32     |  5    |       |
-| TDI    | 19     | 37     |  4    |       |
-| TDO    | 21     | 29     |  5    |       | 
-| TRST   | (26)   | (15)   |  4    | Not required. Internal pull-up de-asserts. *But note that GPIO 22 cannot be used for anything else!* |
+| Signal | Server | Target | Alt | Notes |
+|--------|--------|--------|-----|-------|
+| GND    | 6      | 6      |     |       |
+| TCK    | 23     | 33     |  5  |       |
+| TMS    | 22     | 32     |  5  |       |
+| TDI    | 19     | 37     |  4  |       |
+| TDO    | 21     | 29     |  5  |       | 
+| TRST   | (26)   | (15)   |  4  | Not required. Internal pull-up de-asserts. *But note that GPIO 22 cannot be used for anything else!* |
+
+The JtagBoot program sets up the Alt-mode for there pins on the Target RPI.
 
 Add a file /usr/local/share/openocd/scripts/target/rpi.cfg:
 
@@ -130,22 +140,22 @@ Server RPI:
 
 ## GDB
 
-Create a .gdbinit in ~:
+Create a .gdbinit in ~ on the Development PC:
 
     set auto-load safe-path /
 
-Create a .gdbinit in the project working directory if it is not already there:
+Create a .gdbinit in the project working directory if it is not already there on the Development PC:
 
     target remote 192.168.0.11:3333
     set remotetimeout 10
 
 # Running 
 
-- Copy the just-built kernel.img to the Target RPI:
+- Copy the just-built kernel.img from the Development PC to the Target RPI:
 
     scp kernel.img pi@192.168.0.11:/home/pi
 
-Connect to the OpenOCD and transfer it to the Target RPI:
+Connect to the OpenOCD from the Development PC and transfer it to the Target RPI:
 
     telnet 192.168.0.11 3333
     halt
@@ -154,7 +164,7 @@ Connect to the OpenOCD and transfer it to the Target RPI:
 
 # Debugging
 
-Run GDB. Provide the .elf file that was built for the project:
+Run GDB on the Development PC. Provide the .elf file that was built for the project:
 
     ~/x-tools/armv6-rpi-linux-gnueabi/bin/armv6-rpi-linux-gnueabi-gdb -tui blah.elf
 
