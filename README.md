@@ -46,15 +46,15 @@ Add to ~/.bashrc and restart the terminal to get the new path:
 
     export PATH=~/cross/bin:$PATH
 
-Build a toolchain for arm-unknown-eabi with gdb support:
+Build a toolchain for arm-unknown-eabihf with gdb support:
 
     cd
     mkdir staging
     cd staging
-    ct-ng arm-unknown-eabi
+    ct-ng arm-unknown-eabihf
     ct-ng menuconfig
 
-and enable GDB in "Debug facilities". Then:
+and enable GDB in "Debug facilities" and "hardware (FPU)" in "Target options", "Floating point". Then:
 
     ct-ng build
 

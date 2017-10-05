@@ -12,7 +12,7 @@ NM  = $(TOOLCHAIN)-nm
 CFLAGS = -ffreestanding -g -mfpu=vfp -mfloat-abi=hard -march=armv6zk -mtune=arm1176jzf-s  -Wl,--build-id=none -Wl,-T,armhf_rpi.x
 
 HDRS=                                     ../../b-plus/common-b-plus/uart.h ../../b-plus/common-b-plus/gpio.h ../../b-plus/common-b-plus/aux.h
-SRCS= ../../b-plus/common-b-plus/cstubs.c ../../b-plus/common-b-plus/uart.c ../../b-plus/common-b-plus/gpio.c ../../b-plus/common-b-plus/aux.c float.cpp eightthousand.s 
+SRCS= ../../b-plus/common-b-plus/cstubs.c ../../b-plus/common-b-plus/uart.c ../../b-plus/common-b-plus/gpio.c ../../b-plus/common-b-plus/aux.c float.cpp ../common-zero/eightthousand.s 
 DEPS= $(SRCS) $(HDRS) armhf_rpi.x makefile
 
 all: float.elf kernel.img float.txt float.list float.hex

@@ -55,11 +55,15 @@ void i2c1_init(unsigned char slaveAddr) {
   gpio_set_alt(I2C1_GPIO_SCL1, 0);
 
   //
-  // Enable the controller and store the slave address.
+  // Store the slave address.
   //
-  i2c1[I2C_C] = I2C_C_EN;
   //i2c1[I2C_DIV] = 1500; Use default 100kHz.
   i2c1[I2C_A] = slaveAddr;
+  
+  //
+  // Clear the DONE (by writing a one).
+  //
+  i2c1[I2C_S] = I2C_S_DONE;
 }
 
 void i2c1_write(unsigned char *data, int length) {
@@ -71,21 +75,25 @@ void i2c1_write(unsigned char *data, int length) {
   //
   // Clear the FIFO and start a write.
   //
-  i2c1[I2C_C] = I2C_C_CLEAR | I2C_C_ST;
+  i2c1[I2C_C] = I2C_C_EN | I2C_C_CLEAR | I2C_C_ST;
 
-  
   // 
   // Loop here until the transfer is done.
   //
   int i = 0;
-  while (i2c1[I2C_S_DONE] == 0) {
+  while ((i2c1[I2C_S] & I2C_S_DONE) == 0) {
     //
     // Write a byte to the FIFO if it is not full.
     //
-    while (i2c1[I2C_S_TXD] != 0) {
+    while (i < length && (i2c1[I2C_S] & I2C_S_TXD) != 0) {
       i2c1[I2C_FIFO] = data[i++];
     }
   }
+  
+  //
+  // Clear the DONE (by writing a one) for next time.
+  //
+  i2c1[I2C_S] = I2C_S_DONE;
 }
 
 void i2c1_read(unsigned char *data, int length) {
@@ -97,20 +105,25 @@ void i2c1_read(unsigned char *data, int length) {
   //
   // Clear the FIFO and start a read.
   //
-  i2c1[I2C_C] = I2C_C_READ | I2C_C_CLEAR | I2C_C_ST;
+  i2c1[I2C_C] = I2C_C_EN | I2C_C_READ | I2C_C_CLEAR | I2C_C_ST;
 
   // 
   // Loop here until the transfer is done.
   //
   int i = 0;
-  while (i2c1[I2C_S_DONE] == 0) {
+  while ((i2c1[I2C_S] & I2C_S_DONE) == 0) {
     //
     // Read a byte from the FIFO if it is not empty.
     //
-    while (i2c1[I2C_S_RXD] != 0) {
+    while (i < length && (i2c1[I2C_S] & I2C_S_RXD) != 0) {
       data[i++] = (unsigned char)i2c1[I2C_FIFO];
     }
   }
+  
+  //
+  // Clear the DONE (by writing a one) for next time.
+  //
+  i2c1[I2C_S] = I2C_S_DONE;
 }
 
 void i2c1_writereg(unsigned char reg, unsigned char value) {

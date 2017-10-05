@@ -1,6 +1,6 @@
 # Float
 
-The purpose of this exaple is to verify that floating point number can be
+The purpose of this example is to verify that floating point number can be
 calculated and printf'ed.
 
 # Setup

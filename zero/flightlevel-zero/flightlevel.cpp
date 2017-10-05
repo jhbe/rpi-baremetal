@@ -12,17 +12,18 @@ int main(void) {
   
   mpu6050_init();
           
-  CLed led(LED_GPIO);
+//  CLed led(LED_GPIO);
 
+  printf("Started.\n");
   while (1) {
     float gx, gy, gz, ax, ay, az;
     mpu6050_read(gx, gy, gz, ax, ay, az);
-    printf("GX:%08f  GY:%08f  GZ:%08f  AX:%08f  AY:%08f  AZ%08f\n", gx, gy, gz, ax, ay, az);
-    
+    printf("GX:%08f  GY:%08f  GZ:%08f  AX:%08f  AY:%08f  AZ:%08f\n\r", gx, gy, gz, ax, ay, az);
+/*    
     led.Set();
     delayms(100);
 
     led.Clear();
     delayms(100);
-  }
+*/  }
 }
