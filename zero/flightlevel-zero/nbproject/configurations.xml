@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="common-b-plus"
+                   displayName="common-b-plus"
+                   projectFiles="true">
+      <itemPath>../../b-plus/common-b-plus/aux.c</itemPath>
+      <itemPath>../../b-plus/common-b-plus/aux.h</itemPath>
+      <itemPath>../../b-plus/common-b-plus/cstubs.c</itemPath>
+      <itemPath>../../b-plus/common-b-plus/delay.c</itemPath>
+      <itemPath>../../b-plus/common-b-plus/delay.h</itemPath>
+      <itemPath>../../b-plus/common-b-plus/eightthousand.s</itemPath>
+      <itemPath>../../b-plus/common-b-plus/gpio.c</itemPath>
+      <itemPath>../../b-plus/common-b-plus/gpio.h</itemPath>
+      <itemPath>../../b-plus/common-b-plus/i2c.c</itemPath>
+      <itemPath>../../b-plus/common-b-plus/i2c.h</itemPath>
+      <itemPath>../../b-plus/common-b-plus/start.s</itemPath>
+      <itemPath>../../b-plus/common-b-plus/systemtimer.c</itemPath>
+      <itemPath>../../b-plus/common-b-plus/systemtimer.h</itemPath>
+      <itemPath>../../b-plus/common-b-plus/uart.c</itemPath>
+      <itemPath>../../b-plus/common-b-plus/uart.h</itemPath>
+    </logicalFolder>
+    <df root="." name="0">
+      <in>flightlevel.cpp</in>
+      <in>mpu6050.c</in>
+      <in>mpu6050.h</in>
+    </df>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>nbproject/private/launcher.properties</itemPath>
+      <itemPath>makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
+  <sourceRootList>
+    <Elem>.</Elem>
+    <Elem>../../b-plus/common-b-plus</Elem>
+  </sourceRootList>
+  <projectmakefile>makefile</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>false</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f makefile</buildCommand>
+          <cleanCommand>${MAKE} -f makefile clean</cleanCommand>
+          <executablePath></executablePath>
+        </makeTool>
+        <preBuild>
+          <preBuildCommandWorkingDir>.</preBuildCommandWorkingDir>
+          <preBuildCommand></preBuildCommand>
+        </preBuild>
+      </makefileType>
+      <item path="../../b-plus/common-b-plus/aux.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/aux.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/cstubs.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/delay.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/delay.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/eightthousand.s"
+            ex="false"
+            tool="4"
+            flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/gpio.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/gpio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/i2c.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/i2c.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/start.s" ex="false" tool="4" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/systemtimer.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/systemtimer.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/uart.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../../b-plus/common-b-plus/uart.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="flightlevel.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="mpu6050.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="mpu6050.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

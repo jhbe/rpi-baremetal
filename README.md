@@ -162,6 +162,22 @@ Connect to the OpenOCD from the Development PC and transfer it to the Target RPI
     load_image ../kernel.img 0x8000 bin
     resume
 
+TO exit telnet:
+
+    Ctrl-]
+    quit
+
+
+# Printf Support
+
+For printf support, connect pin 8 (TX) on the Target RPI to pin 10 (RX) on the
+Server RPI and make sure the program executes uart_init(). On the Server RPI,
+run
+
+    minicom -b 9600 -o -D /dev/ttyAMA0
+
+To add CR to LF: Ctrl-A U.
+
 # Debugging
 
 Run GDB on the Development PC. Provide the .elf file that was built for the project:

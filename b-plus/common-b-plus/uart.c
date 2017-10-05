@@ -53,7 +53,7 @@ void uart_init() {
 	// 9600 baud. ((2500000000/9600)/8-1=3254
 	// 115200 baud. ((2500000000/115200)/8-1=270
 	//
-	aux[AUX_MU_BAUD_REG] = 3254;
+	aux[AUX_MU_BAUD_REG] = 270;
 
 	//
 	// Enable the transmitter and receiver. No flow control.
